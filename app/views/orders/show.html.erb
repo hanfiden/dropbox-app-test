@@ -1,12 +1,13 @@
 <div class='relative w-[100vw]'>
   <div class="flex justify-between mb-20">
-    <%= link_to 'Retourner au commandes', orders_path, class:'main-button' %>
-    <%= link_to 'Add new term', new_order_term_path(@order), class:'main-button' %>
+    <%= link_to 'Retour', orders_path, class:'main-button' %>
+    <%= link_to 'Ajouter une échéance', new_order_term_path(@order), class:'main-button' %>
   </div>
 
   <div class="order__show-info">
-    <div class="px-4 py-5 sm:px-6">
+    <div class="px-4 py-5 sm:px-6 flex justify-between">
       <h3 class="text-lg leading-6 font-medium text-gray-900">Information sur la commande</h3>
+      <h3 class="text-lg hover:opacity-60"><%= link_to '🖋', edit_order_path(@order) %></h3>
     </div>
     <div class="border-t border-gray-200">
       <dl>

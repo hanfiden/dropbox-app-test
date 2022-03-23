@@ -1,5 +1,7 @@
 class TermsController < ApplicationController
   before_action :find_order, only: [:new, :create, :edit, :update]
+  before_action :find_term, only: [:edit, :update, :destroy]
+
   def new
     @term = Term.new
   end
@@ -27,6 +29,10 @@ class TermsController < ApplicationController
 
   def find_order
     @order = Order.find(params[:order_id])
+  end
+
+  def find_term
+    @term = Term.find(params[:id])
   end
 
   def term_params

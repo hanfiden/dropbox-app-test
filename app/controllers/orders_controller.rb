@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :find_order, only: [:show, :edit, :update, :destroy]
+
   def index
     @orders = Order.all
     @orders.map do |order|
@@ -7,9 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
     @terms = Term.where(order: @order)
-    @term = Term.new
     check_remain_amount(@order)
   end
 
@@ -27,7 +27,24 @@ class OrdersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @order.update(order_params)
+
+    if @order.save
+      redirect_to order_path(@order)
+    else
+      render :edit
+    end
+  end
+
   private
+
+  def find_order
+    @order = Order.find(params[:id])
+  end
 
   def check_remain_amount(order)
     order.remains_amount = calculate_remain_amount(order, order.terms)

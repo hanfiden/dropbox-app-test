@@ -1,0 +1,22 @@
+<%= simple_form_for([@order, @term]) do |f| %>
+  <div class="relative z-0 mb-6 w-full group">
+      <label for="order_date" class="term__form-label">Date de l'échéance'</label>
+      <%= f.date_field :due_date, label: false, class:'term__form-input', required: true %>
+  </div>
+
+  <div class="relative z-0 mb-6 w-full group">
+      <label for="amount" class="term__form-label">Montant de l'échéance</label>
+      <%= f.input :amount, label: false, input_html: { class:'term__form-input', placeholder: '€ en Euros' }, required: true %>
+  </div>
+
+  <div class="relative z-0 mb-6 w-full group">
+      <label for="file" class="term__form-label">Télécharger le Document</label>
+      <%= f.input :file, label: false, input_html: { class:'hidden', id:'dropbox-file-url' } %>
+  </div>
+
+  <div id="dropboxContainer" class="mt-10"></div>
+
+  <div class="mt-5 border-1 shadow-lg text-green-800 hover:text-green-400" id="dropbox-file-name"></div>
+
+  <%= f.button :submit, "Créer l'échéance", class: 'term__form-button' %>
+<% end %>
