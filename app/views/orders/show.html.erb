@@ -31,6 +31,11 @@
         </div>
 
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Reste à payer</dt>
+          <dd class="mt-1 text-sm sm:mt-0 sm:col-span-2 <%= (@order.remains_amount > 0) ? 'text-red-500' : 'text-green-500' %>"><%= @order.remains_amount %>€</dd>
+        </div>
+
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">Les échéances</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <% @terms.each do |term| %>
@@ -45,7 +50,7 @@
                       <span class="ml-2 flex-1 w-0 truncate"><%= term.amount%>€</span>
                     </div>
                     <div class="ml-4 flex-shrink-0">
-                      <%= link_to 'Open Pdf', term.file, target: '_blank', class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+                      <%= link_to 'Ouvrir le document', term.file, target: '_blank', class: "font-medium text-indigo-600 hover:text-indigo-500" %>
                     </div>
                   </li>
                 </ul>
