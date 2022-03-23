@@ -1,3 +1,3 @@
 class Order < ApplicationRecord
-  has_many :terms
+  has_many :terms, dependent: :destroy
 end
