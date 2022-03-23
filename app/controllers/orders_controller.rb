@@ -1,12 +1,16 @@
 class OrdersController < ApplicationController
   def index
     @orders = Order.all
+    @orders.map do |order|
+      order.remains_amount = calculate_remain_amount(order, order.terms)
+    end
   end
 
   def show
     @order = Order.find(params[:id])
     @terms = Term.where(order: @order)
     @term = Term.new
+    @order.remains_amount = calculate_remain_amount(@order, @order.terms)
   end
 
   def new
@@ -24,6 +28,14 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def calculate_remain_amount(order, terms)
+     order.total_amount - sum_of_terms_amount(terms)
+  end
+
+  def sum_of_terms_amount(terms)
+    terms.map { |term| term.amount }.sum
+  end
 
   def order_params
     params.require(:order).permit(:name, :client_name, :order_date, :total_amount)

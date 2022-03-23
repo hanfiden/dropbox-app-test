@@ -18,6 +18,9 @@
                       Montant total
                   </th>
                   <th scope="col" class="px-6 py-3">
+                      Reste à payer
+                  </th>
+                  <th scope="col" class="px-6 py-3">
                       <span class="hidden">Commande</span>
                   </th>
               </tr>
@@ -40,6 +43,11 @@
                   <td class="px-6 py-4">
                     <%= order.total_amount %>€
                   </td>
+
+                  <td class="px-6 py-4 <%= (order.remains_amount > 0) ? 'text-red-500' : 'text-green-500' %>">
+                    <%= order.remains_amount %>€
+                  </td>
+
                   <td class="px-6 py-4 text-right">
                       <%= link_to 'Voir la commande', order_path(order), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
                   </td>
