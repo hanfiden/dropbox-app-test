@@ -46,13 +46,10 @@
         },
         cancel: function(){
         },
-        linkType: "preview",
         multiselect: false,
-        extensions:['.pdf', '.txt', '.doc', '.docx'],
+        extensions:['.pdf', '.doc', '.docx'],
   };
 
   const button = Dropbox.createChooseButton(options);
   document.getElementById("dropboxContainer").appendChild(button);
-
-  Dropbox.choose(options);
 </script>
