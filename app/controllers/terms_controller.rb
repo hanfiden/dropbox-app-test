@@ -1,6 +1,5 @@
 class TermsController < ApplicationController
   before_action :find_order, only: [:new, :create, :edit, :update]
-
   def new
     @term = Term.new
   end
