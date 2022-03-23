@@ -41,6 +41,7 @@
               <% @terms.each do |term| %>
                 <ul role="list" class="order__show-attachment-list">
                   <li class="order__show-attachment-li">
+
                     <div class="w-0 flex-1 flex items-center">
                       <!-- Heroicon name: solid/paper-clip -->
                       <svg class="order__show-attachment-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -49,8 +50,13 @@
                       <span class="ml-2 flex-1 w-0 truncate">Le <%= term.due_date %></span>
                       <span class="ml-2 flex-1 w-0 truncate"><%= term.amount%>€</span>
                     </div>
+
                     <div class="ml-4 flex-shrink-0">
-                      <%= link_to 'Ouvrir le document', term.file, target: '_blank', class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+                      <% unless term.file == '' %>
+                        <%= link_to 'Ouvrir le document', term.file, target: '_blank', class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+                      <% else %>
+                      <%= link_to 'Upload document', new_order_term_path(@order), class:'font-medium text-orange-600 hover:text-orange-500' %>
+                      <% end %>
                     </div>
                   </li>
                 </ul>
