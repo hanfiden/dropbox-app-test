@@ -1,5 +1,5 @@
 class TermsController < ApplicationController
-  before_action :find_order, only: [:new, :create, :edit, :update]
+  before_action :find_order, only: [:edit, :new, :create, :update, :destroy]
   before_action :find_term, only: [:edit, :update, :destroy]
 
   def new
@@ -17,13 +17,24 @@ class TermsController < ApplicationController
     end
   end
 
-  # def edit
+  def edit
+  end
 
-  # end
+  def update
+    @term.update(term_params)
 
-  # def update
+    if @term.save
+      redirect_to order_path(@order)
+    else
+      render :edit
+    end
+  end
 
-  # end
+  def destroy
+    @term.destroy
+
+    redirect_to order_path(@order)
+  end
 
   private
 
