@@ -1,0 +1,7 @@
+<%= simple_form_for(@order) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :client_name %>
+  <%= f.date_field :order_date %>
+  <%= f.number_field :total_amount %>
+  <%= f.button :submit %>
+<% end %>

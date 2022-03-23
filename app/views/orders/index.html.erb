@@ -1,0 +1,16 @@
+<h2><%= link_to 'Create new order', new_order_path %></h2>
+
+<h1>Orders:</h1>
+
+<div class="orders__container">
+  <div class="orders__box">
+    <% @orders.each do |order| %>
+      <div class="orders__item">
+        <p><%= link_to order.name, order_path(order) %></p>
+        <p><%= order.client_name %></p>
+        <p><%= order.order_date %></p>
+        <p><%= order.total_amount %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
