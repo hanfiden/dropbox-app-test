@@ -2,3 +2,15 @@
 <p>Nom du client:<%= @order.client_name %></p>
 <p>Le <%= @order.order_date %></p>
 <p><%= @order.total_amount %>€</p>
+
+<div class="order__terms-container">
+  <% @terms.each do |term| %>
+    <p><%= term.due_date %></p>
+    <p><%= term.amount %></p>
+    <p><%= link_to 'Open Pdf', term.file, target: '_blank' %></p>
+  <% end %>
+</div>
+
+<h1><%= link_to 'Add new term', new_order_term_path(@order) %></h1>
+
+<p><%= link_to 'Back to orders', orders_path %></p>
