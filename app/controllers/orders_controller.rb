@@ -59,6 +59,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:name, :client_name, :order_date, :total_amount)
+    params.require(:order).permit(:name, :client_name, :order_date, :total_amount, terms_attributes: [:id, :due_date, :amount, :file])
   end
 end
