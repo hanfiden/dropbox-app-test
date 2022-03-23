@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.all
     @orders.map do |order|
-      order.remains_amount = calculate_remain_amount(order, order.terms)
+      check_remain_amount(order)
     end
   end
 
@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @terms = Term.where(order: @order)
     @term = Term.new
-    @order.remains_amount = calculate_remain_amount(@order, @order.terms)
+    check_remain_amount(@order)
   end
 
   def new
@@ -28,6 +28,10 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def check_remain_amount(order)
+    order.remains_amount = calculate_remain_amount(order, order.terms)
+  end
 
   def calculate_remain_amount(order, terms)
      order.total_amount - sum_of_terms_amount(terms)

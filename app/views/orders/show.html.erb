@@ -1,56 +1,56 @@
 <div class='relative w-[100vw]'>
   <div class="flex justify-between mb-20">
-    <%= link_to 'Retourner au commandes', orders_path, class:'text-purple-500 bg-white px-10 py-4 shadow-md rounded-full font-bold my-3 hover:shadow-xl active:scale-90 transition duration-150' %>
-    <%= link_to 'Add new term', new_order_term_path(@order), class:'text-purple-500 bg-white px-10 py-4 shadow-md rounded-full font-bold my-3 hover:shadow-xl active:scale-90 transition duration-150' %>
+    <%= link_to 'Retourner au commandes', orders_path, class:'main-button' %>
+    <%= link_to 'Add new term', new_order_term_path(@order), class:'main-button' %>
   </div>
 
-  <div class="bg-white shadow overflow-hidden sm:rounded-lg w-[900px] m-auto">
+  <div class="order__show-info">
     <div class="px-4 py-5 sm:px-6">
       <h3 class="text-lg leading-6 font-medium text-gray-900">Information sur la commande</h3>
     </div>
     <div class="border-t border-gray-200">
       <dl>
-        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Commande</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @order.name %></dd>
+        <div class="bg-gray-50 order__show-row">
+          <dt class="order__show-first-col">Commande</dt>
+          <dd class="order__show-second-col"><%= @order.name %></dd>
         </div>
 
-        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Nom du client</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @order.client_name %></dd>
+        <div class="bg-white order__show-row">
+          <dt class="order__show-first-col">Nom du client</dt>
+          <dd class="order__show-second-col"><%= @order.client_name %></dd>
         </div>
 
-        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Date de la commande</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @order.order_date %></dd>
+        <div class="bg-gray-50 order__show-row">
+          <dt class="order__show-first-col">Date de la commande</dt>
+          <dd class="order__show-second-col"><%= @order.order_date %></dd>
         </div>
 
-        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Montant total</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @order.total_amount %>€</dd>
+        <div class="bg-white order__show-row">
+          <dt class="order__show-first-col">Montant total</dt>
+          <dd class="order__show-second-col"><%= @order.total_amount %>€</dd>
         </div>
 
-        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Reste à payer</dt>
+        <div class="bg-white order__show-row">
+          <dt class="order__show-first-col">Reste à payer</dt>
           <dd class="mt-1 text-sm sm:mt-0 sm:col-span-2 <%= (@order.remains_amount > 0) ? 'text-red-500' : 'text-green-500' %>"><%= @order.remains_amount %>€</dd>
         </div>
 
-        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <div class="order__show-attachment">
           <dt class="text-sm font-medium text-gray-500">Les échéances</dt>
-            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <dd class="order__show-second-col">
               <% @terms.each do |term| %>
-                <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
-                  <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                <ul role="list" class="order__show-attachment-list">
+                  <li class="order__show-attachment-li">
                     <div class="w-0 flex-1 flex items-center">
                       <!-- Heroicon name: solid/paper-clip -->
-                      <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <svg class="order__show-attachment-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
                       </svg>
                       <span class="ml-2 flex-1 w-0 truncate">Le <%= term.due_date %></span>
                       <span class="ml-2 flex-1 w-0 truncate"><%= term.amount%>€</span>
                     </div>
                     <div class="ml-4 flex-shrink-0">
-                      <%= link_to 'Ouvrir le document', term.file, target: '_blank', class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+                      <%= link_to term.file, '', target: '_blank', class: "font-medium text-indigo-600 hover:text-indigo-500" %>
                     </div>
                   </li>
                 </ul>
