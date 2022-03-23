@@ -1,31 +1,32 @@
 <div class='relative w-[100vw]'>
   <div class="mb-20">
-    <%= link_to 'Retour', orders_path, class:'text-purple-500 bg-white px-10 py-4 shadow-md rounded-full font-bold my-3 hover:shadow-xl active:scale-90 transition duration-150' %>
+    <%= link_to 'Retour', orders_path, class:'main-button' %>
   </div>
 
   <div class='m-auto w-[500px]'>
     <h1 class="text-4xl font-semibold mb-20">Nouvelle commande</h1>
     <%= simple_form_for(@order) do |f| %>
       <div class="relative z-0 mb-6 w-full group">
-          <label for="name" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nom de la commande</label>
-          <%= f.input :name, label: false, input_html: { class:'block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer', placeholder: '' }, required: true %>
+          <label for="name" class="order__form-label">Nom de la commande</label>
+          <%= f.input :name, label: false, input_html: { class:'order__form-input', placeholder: '' }, required: true %>
       </div>
 
       <div class="relative z-0 mb-6 w-full group">
-          <label for="client_name" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nom du client</label>
-          <%= f.input :client_name, label: false, input_html: { class:'block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer', placeholder: '' }, required: true %>
+          <label for="client_name" class="order__form-label">Nom du client</label>
+          <%= f.input :client_name, label: false, input_html: { class:'order__form-input', placeholder: '' }, required: true %>
       </div>
 
       <div class="relative z-0 mb-6 w-full group">
-          <label for="order_date" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Date de la commande</label>
-          <%= f.date_field :order_date, label: false, class:'block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer', required: true %>
+          <label for="order_date" class="order__form-label">Date de la commande</label>
+          <%= f.date_field :order_date, label: false, class:'order__form-input', required: true %>
       </div>
 
       <div class="relative z-0 mb-6 w-full group">
-          <label for="total_amount" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Montant total</label>
-          <%= f.input :total_amount, label: false, input_html: { class:'block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer', placeholder: '€ en Euros' }, required: true %>
+          <label for="total_amount" class="order__form-label">Montant total</label>
+          <%= f.input :total_amount, label: false, input_html: { class:'order__form-input', placeholder: '€ en Euros' }, required: true %>
       </div>
-      <%= f.button :submit, 'Créer la commande', class: 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 cursor-pointer' %>
+
+      <%= f.button :submit, 'Créer la commande', class: 'order__form-button' %>
     <% end %>
   </div>
 </div>
