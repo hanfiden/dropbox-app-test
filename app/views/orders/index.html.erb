@@ -44,7 +44,7 @@
                     <%= order.total_amount %>€
                   </td>
 
-                  <td class="px-6 py-4 <%= (order.remains_amount > 0) ? 'text-red-500' : 'text-green-500' %>">
+                  <td class="px-6 py-4 <%= (order.remains_amount == 0) ? 'text-green-500' : 'text-red-500' %>">
                     <%= order.remains_amount %>€
                   </td>
 

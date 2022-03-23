@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :find_order, only: [:show, :edit, :update, :destroy]
 
   def index
-    @orders = Order.all
+    @orders = Order.order(:order_date)
     @orders.map do |order|
       check_remain_amount(order)
     end
