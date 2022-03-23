@@ -5,28 +5,6 @@
 
   <div class='m-auto w-[500px]'>
     <h1 class="text-4xl font-semibold mb-20">Nouvelle commande</h1>
-    <%= simple_form_for(@order) do |f| %>
-      <div class="relative z-0 mb-6 w-full group">
-          <label for="name" class="order__form-label">Nom de la commande</label>
-          <%= f.input :name, label: false, input_html: { class:'order__form-input', placeholder: '' }, required: true %>
-      </div>
-
-      <div class="relative z-0 mb-6 w-full group">
-          <label for="client_name" class="order__form-label">Nom du client</label>
-          <%= f.input :client_name, label: false, input_html: { class:'order__form-input', placeholder: '' }, required: true %>
-      </div>
-
-      <div class="relative z-0 mb-6 w-full group">
-          <label for="order_date" class="order__form-label">Date de la commande</label>
-          <%= f.date_field :order_date, label: false, class:'order__form-input', required: true %>
-      </div>
-
-      <div class="relative z-0 mb-6 w-full group">
-          <label for="total_amount" class="order__form-label">Montant total</label>
-          <%= f.input :total_amount, label: false, input_html: { class:'order__form-input', placeholder: '€ en Euros' }, required: true %>
-      </div>
-
-      <%= f.button :submit, 'Créer la commande', class: 'order__form-button' %>
-    <% end %>
+    <%= render 'form' %>
   </div>
 </div>
