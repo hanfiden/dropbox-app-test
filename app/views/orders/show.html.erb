@@ -1,7 +1,7 @@
 <div class='relative w-[100vw]'>
   <div class="flex justify-between mb-20">
     <%= link_to 'Retour', orders_path, class:'main-button' %>
-    <%= link_to 'Ajouter une échéance', new_order_term_path(@order), class:'main-button' %>
+    <%= link_to 'Ajouter une échéance', new_order_term_path(@order), data: { turbo: false }, class:'main-button' %>
   </div>
 
   <div class="order__show-info">
@@ -46,7 +46,7 @@
                     <div class="w-0 flex-1 flex items-center">
                       <!-- Heroicon name: solid/paper-clip -->
                       <%= button_to '❌' , [@order, term], method: :delete, class: 'order__show-attachment-icon hover:opacity-70',  onclick: "return confirm('Êtes-vous sûre?')"  %>
-                      <%= link_to '🖊' , edit_order_term_path(@order, term), class: 'order__show-attachment-icon hover:opacity-70' %>
+                      <%= link_to '🖊' , edit_order_term_path(@order, term), class: 'order__show-attachment-icon hover:opacity-70', data: { turbo: false } %>
                       <span class="ml-2 flex-1 w-0 truncate">Le <%= term.due_date %></span>
                       <span class="ml-0 flex-1 w-0 truncate">Montant: <%= term.amount%>€</span>
                     </div>
