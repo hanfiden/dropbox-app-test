@@ -5,6 +5,8 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @terms = Term.where(order: @order)
+    @term = Term.new
   end
 
   def new

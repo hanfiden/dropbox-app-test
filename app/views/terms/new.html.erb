@@ -1,0 +1,6 @@
+<%= simple_form_for([@order, @term]) do |f| %>
+  <%= f.date_field :due_date %>
+  <%= f.number_field :amount %>
+  <%= f.input :file %>
+  <%= f.button :submit %>
+<% end %>
