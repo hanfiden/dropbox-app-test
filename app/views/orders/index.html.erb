@@ -2,58 +2,58 @@
   <h2 class="mb-10"><%= link_to 'Nouvelle commande' , new_order_path, data: { turbo: false }, class:'main-button' %></h2>
 
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead class="order__index-table-thead">
-              <tr>
-                  <th scope="col" class="order__index-table-th">
-                      Commande
-                  </th>
-                  <th scope="col" class="order__index-table-th">
-                      Nom du client
-                  </th>
-                  <th scope="col" class="order__index-table-th">
-                      Date de commande
-                  </th>
-                  <th scope="col" class="order__index-table-th">
-                      Montant total
-                  </th>
-                  <th scope="col" class="order__index-table-th">
-                      Reste à payer
-                  </th>
-                  <th scope="col" class="order__index-table-th">
-                      <span class="hidden">Commande</span>
-                  </th>
-              </tr>
-          </thead>
-          <tbody>
-              <% @orders.each do |order| %>
-                <tr class="order__index-tr">
-                  <th scope="row" class="px-6 py-4 order__first-col">
-                    <%= link_to order.name, order_path(order) %>
-                  </th>
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="order__index-table-thead">
+        <tr>
+            <th scope="col" class="order__index-table-th">
+                Commande
+            </th>
+            <th scope="col" class="order__index-table-th">
+                Nom du client
+            </th>
+            <th scope="col" class="order__index-table-th">
+                Date de commande
+            </th>
+            <th scope="col" class="order__index-table-th">
+                Montant total
+            </th>
+            <th scope="col" class="order__index-table-th">
+                Reste à payer
+            </th>
+            <th scope="col" class="order__index-table-th">
+                <span class="hidden">Commande</span>
+            </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr class="order__index-tr">
+            <th scope="row" class="px-6 py-4 order__first-col">
+              <%= link_to order.name, order_path(order) %>
+            </th>
 
-                  <td class="px-6 py-4">
-                    <%= order.client_name %>
-                  </td>
+            <td class="px-6 py-4">
+              <%= order.client_name %>
+            </td>
 
-                  <td class="px-6 py-4">
-                    <%= order.order_date %>
-                  </td>
+            <td class="px-6 py-4">
+              <%= order.order_date %>
+            </td>
 
-                  <td class="px-6 py-4">
-                    <%= order.total_amount %>€
-                  </td>
+            <td class="px-6 py-4">
+              <%= order.total_amount %>€
+            </td>
 
-                  <td class="px-6 py-4 <%= (order.remains_amount == 0) ? 'text-green-500' : 'text-red-500' %>">
-                    <%= order.remains_amount %>€
-                  </td>
+            <td class="px-6 py-4 <%= (order.remains_amount == 0) ? 'text-green-500' : 'text-red-500' %>">
+              <%= order.remains_amount %>€
+            </td>
 
-                  <td class="px-6 py-4 text-right">
-                      <%= link_to 'Voir la commande', order_path(order), class: "order__index-to-show " %>
-                  </td>
-                </tr>
-              <% end %>
-          </tbody>
-      </table>
+            <td class="px-6 py-4 text-right">
+                <%= link_to 'Voir la commande', order_path(order), class: "order__index-to-show " %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
