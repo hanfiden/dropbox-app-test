@@ -55,7 +55,7 @@
                       <% unless term.file == '' || term.file.nil? %>
                         <%= link_to 'Ouvrir le document', term.file, target: '_blank', class: "font-medium text-indigo-600 hover:text-indigo-500" %>
                       <% else %>
-                      <%= link_to 'Upload document', new_order_term_path(@order), class:'font-medium text-orange-600 hover:text-orange-500', data: { turbo: false } %>
+                      <%= link_to 'Upload document', edit_order_term_path(@order, term), class:'font-medium text-orange-600 hover:text-orange-500', data: { turbo: false } %>
                       <% end %>
                     </div>
                   </li>
