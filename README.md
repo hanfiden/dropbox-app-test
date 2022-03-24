@@ -1,24 +1,40 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version: 3.1.1
+* Rails version: 7.0.2
 
-Things you may want to cover:
+* Gem Added:
+Gem 'dotenv-rails', groups: [:development, :test]
+Gem 'simple_form'
+Gem 'faker'
+Gem 'tailwindcss-rails'
 
-* Ruby version
+* How to run:
+git clone https://github.com/hanfiden/dropbox-app-test.git
+cd dropbox-app-test
+code .
 
-* System dependencies
+rails db:create
+bundle install
+yarn install
+rails db:migrate
+rails db:seed
 
-* Configuration
+touch .env
+echo '.env*' >> .gitignore
+////// Add DROPBOX_APP_KEY=******** to .env ////
 
-* Database creation
+Launch a localhost server with:
+bin/dev
 
-* Database initialization
+* Deployment instructions:
+heroku login
+heroku create
+heroku config:set DROPBOX_APP_KEY=********
 
-* How to run the test suite
+git push heroku main
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+heroku run rails db:migrate
+heroku run rails db:seed
 
 * ...
