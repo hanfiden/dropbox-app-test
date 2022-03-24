@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :find_order, only: [:show, :edit, :update, :destroy]
 
   def index
-    @orders = Order.order(:order_date)
+    @orders = Order.includes(:terms).order(:order_date)
     @orders.map do |order|
       check_remain_amount(order)
     end
@@ -57,6 +57,7 @@ class OrdersController < ApplicationController
 
   def calculate_remain_amount(order, terms)
      order.total_amount - sum_of_terms_amount(terms)
+    #  order.total_amount - terms.sum(:amount)
   end
 
   def sum_of_terms_amount(terms)
