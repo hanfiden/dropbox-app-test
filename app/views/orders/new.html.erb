@@ -5,6 +5,42 @@
 
   <div class='m-auto w-[500px]'>
     <h1 class="text-4xl font-semibold mb-10">Nouvelle commande</h1>
-    <%= render 'form', button_name: 'Créer la commande' %>
+    <%= simple_form_for(@order) do |f| %>
+      <%= render 'form', f: f %>
+
+      <div class="mb-10 mt-10">
+        <p class="text-3xl font-semibold">Ajouter une échéance</p>
+      </div>
+
+      <div class="relative z-0 mb-6 w-full group">
+        <%= f.fields_for :terms, Term.new do |form| %>
+          <div class="relative z-0 mb-6 w-full group">
+            <label for="order_date" class="term__form-label">Date de l'échéance</label>
+            <%= form.date_field :due_date, label: false, class:'term__form-input' %>
+          </div>
+
+          <div class="relative z-0 mb-6 w-full group">
+            <label for="amount" class="term__form-label">Montant de l'échéance</label>
+            <%= form.input :amount, label: false, input_html: { class:'term__form-input', placeholder: '€ en Euros' } %>
+          </div>
+        <% end %>
+
+        <div class="border-b mb-10 mt-10"></div>
+
+        <%= f.fields_for :terms, Term.new do |form| %>
+          <div class="relative z-0 mb-6 w-full group">
+            <label for="order_date" class="term__form-label">Date de l'échéance</label>
+            <%= form.date_field :due_date, label: false, class:'term__form-input', required: false %>
+          </div>
+
+          <div class="relative z-0 mb-6 w-full group">
+            <label for="amount" class="term__form-label">Montant de l'échéance</label>
+            <%= form.input :amount, label: false, input_html: { class:'term__form-input', placeholder: '€ en Euros' }, required: false %>
+          </div>
+        <% end %>
+      </div>
+
+      <%= f.button :submit, 'Créer la commande', class: 'order__form-button' %>
+    <% end %>
   </div>
 </div>
